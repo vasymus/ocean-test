@@ -1,4 +1,4 @@
-FROM php:8.2.18-fpm as base
+FROM php:8.3.6-fpm as base
 
 ENV NGINX_VERSION   1.25.5
 ENV NJS_VERSION     0.8.4
@@ -152,9 +152,9 @@ COPY --chown=www-data:www-data ./bootstrap ./bootstrap
 COPY --chown=www-data:www-data ./config ./config
 COPY --chown=www-data:www-data ./database ./database
 COPY --chown=www-data:www-data ./public ./public
-COPY --chown=www-data:www-data ./resources/views ./resources/views
+COPY --chown=www-data:www-data ./resources ./resources
 COPY --chown=www-data:www-data ./routes ./routes
-COPY --chown=www-data:www-data ./src ./src
+COPY --chown=www-data:www-data ./app ./app
 COPY --chown=www-data:www-data ./storage ./storage
 COPY --chown=www-data:www-data ./.env ./.env
 

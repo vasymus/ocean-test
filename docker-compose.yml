@@ -41,14 +41,19 @@ services:
                 #
                 # You can use this file to overwrite the default configuration
                 #
-                default_time_zone='+00:00'
         # didn't want to add any bind mount or additional Dockerfile
         command:
             bash -c 'echo "$$MYSQL_INIT_SCRIPT" > /docker-entrypoint-initdb.d/init.sql
             && chmod 555 /docker-entrypoint-initdb.d/init.sql
             && echo "$$MYSQL_CONFIG" > /etc/mysql/conf.d/my.cnf
             && chmod 555 /etc/mysql/conf.d/my.cnf
-            && docker-entrypoint.sh mysqld --ignore-db-dir=lost+found'
+            && docker-entrypoint.sh mysqld'
+    ### Redis ###
+    redis:
+        image: redis:7.2.4
+        volumes:
+            - redis-data:/data
 
 volumes:
     mysql-db-data:
+    redis-data:
