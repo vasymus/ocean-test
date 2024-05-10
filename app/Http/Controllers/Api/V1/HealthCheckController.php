@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Api\BaseApiController;
 use App\Models\HealthCheck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

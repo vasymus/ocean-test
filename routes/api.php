@@ -7,4 +7,6 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //})->middleware('auth:sanctum');
 
-Route::get('v1/health-check', \App\Http\Controllers\Api\HealthCheckController::class)->name('health-check');
+Route::middleware(['throttle:api'])->group(function() {
+    Route::get('v1/health-check', \App\Http\Controllers\Api\V1\HealthCheckController::class)->name('health-check');
+});
